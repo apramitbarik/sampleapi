@@ -33,13 +33,15 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt =>
                opt.UseInMemoryDatabase("TodoList"));
-            services.AddHealthChecks()
-            .AddDiskStorageHealthCheck(delegate (DiskStorageOptions diskStorageOptions)
-            {
-                diskStorageOptions.AddDrive(@"C:\", 5000);
-            }, "My Drive", Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded)
-            .AddCheck<RandomHealthCheck>("random");
-            services.AddHealthChecksUI();
+
+            // services.AddHealthChecks()
+            // .AddDiskStorageHealthCheck(delegate (DiskStorageOptions diskStorageOptions)
+            // {
+            //     diskStorageOptions.AddDrive(@"C:\", 5000);
+            // }, "My Drive", Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded)
+            // .AddCheck<RandomHealthCheck>("random");
+            // services.AddHealthChecksUI();
+
             // services.AddHealthChecksUI()
             //          .AddHealthChecks()
             //          .AddCheck<RandomHealthCheck>("random");
@@ -87,15 +89,16 @@ namespace TodoApi
             // app.UseHealthChecks("/todoitems");
             // app.UseHealthChecksUI()
             //     .UseHealthChecks("/todoitems");
-            app.UseHealthChecks("/hc", new HealthCheckOptions()
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            });
-            app.UseHealthChecksUI(delegate (Options options)
-            {
-                options.UIPath = "/hc-ui";
-            });
+
+            // app.UseHealthChecks("/hc", new HealthCheckOptions()
+            // {
+            //     Predicate = _ => true,
+            //     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            // });
+            // app.UseHealthChecksUI(delegate (Options options)
+            // {
+            //     options.UIPath = "/hc-ui";
+            // });
         }
     }
 }
