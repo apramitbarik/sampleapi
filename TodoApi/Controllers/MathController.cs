@@ -16,7 +16,7 @@ namespace TodoApi.Controllers
         [HttpGet("{value1}/{value2}")]
         public int Add(int value1, int value2)
         {
-            return value1 + value2;
+            return value1 + value2 + 1;
         }
 
         [HttpGet]
